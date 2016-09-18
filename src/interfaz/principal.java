@@ -9,6 +9,7 @@ package interfaz;
 import clase.Cuenta;
 import clase.Helper;
 import excepciones.NoCeroException;
+import excepciones.NoFondoException;
 import excepciones.NoNegativoException;
 import java.awt.Button;
 import java.util.logging.Level;
@@ -107,9 +108,9 @@ public class principal extends javax.swing.JFrame {
 
     private void cmdCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearCuentaActionPerformed
         try {
-            c = new Cuenta(12345,1142478);
+            c = new Cuenta(-12345, 1142478);
         } catch (NoNegativoException ex) {
-            Helper.mensaje(this, ex.getMessage(),3);
+            Helper.mensaje(this, ex.getMessage(),1);
         } catch (NoCeroException ex) {
            Helper.mensaje(this, ex.getMessage(),3);
         }
@@ -127,23 +128,28 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdIngresarActionPerformed
 
     private void cmdRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRetirarActionPerformed
-        try {
+       try {
             c.retirar(10000);
         } catch (NoNegativoException ex) {
-            Helper.mensaje(this, ex.getMessage(),3);
+            Helper.mensaje(this, ex.getMessage(), 3);
+
         } catch (NoCeroException ex) {
-            Helper.mensaje(this, ex.getMessage(),3);
+            Helper.mensaje(this, ex.getMessage(), 3);
+
+        } catch (NoFondoException ex) {
+            Helper.mensaje(this, ex.getMessage(), 3);
+
         }
+    
     }//GEN-LAST:event_cmdRetirarActionPerformed
 
     private void cmdActualizarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdActualizarSaldoActionPerformed
-        try {
+ try {
             c.actualizarsaldo(2.5);
         } catch (NoNegativoException ex) {
-          Helper.mensaje(this, ex.getMessage(),3);
-        } catch (NoCeroException ex) {
-           Helper.mensaje(this, ex.getMessage(),3);
-        }
+            Helper.mensaje(this, ex.getMessage(), 3);
+
+        }                                          
     }//GEN-LAST:event_cmdActualizarSaldoActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed

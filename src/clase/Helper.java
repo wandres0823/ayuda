@@ -29,6 +29,7 @@ public class Helper {
       
         }
     }
+   
     public static void setbotones(Component[] botones ,boolean[] estado ){
         for (int i = 0; i < botones.length; i++) {
             botones[i].setEnabled(estado[i]);
